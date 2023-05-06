@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="00d86324-b84e-4a4f-9745-22d18dcccb73" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\Java_feil\Java_software\maven\repository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../Java_feil/Java_software/apache-maven-3.6.1" />
+        <option name="userSettingsFile" value="D:\Java_feil\Java_software\apache-maven-3.6.1\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2OsVrHFgdJS8mDnQNvbi0gxUQFm" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/code/spring2/springBoot_theo",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
+    "spring.configuration.checksum": "7294ebfb1e66f6983f6b2266ca3da27c",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.zzh.common" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\code\project\reggie_zzh\src\main\resources\backend\page\demo" />
+      <recent name="D:\code\project\reggie_zzh\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ReggieApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="reggie_zzh" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.zzh.ReggieApplication" />
+      <extension name="coverage" sample_coverage="false" track_test_folders="true">
+        <pattern>
+          <option name="PATTERN" value="com.zzh.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.ReggieApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="00d86324-b84e-4a4f-9745-22d18dcccb73" name="Changes" comment="" />
+      <created>1682349474382</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682349474382</updated>
+      <workItem from="1682349475754" duration="4535000" />
+      <workItem from="1682395994051" duration="18844000" />
+      <workItem from="1682430244999" duration="1180000" />
+      <workItem from="1682431467229" duration="9912000" />
+      <workItem from="1682497817736" duration="1652000" />
+      <workItem from="1682583539220" duration="188000" />
+      <workItem from="1682596951993" duration="5824000" />
+      <workItem from="1682603192874" duration="7365000" />
+      <workItem from="1682670678273" duration="3152000" />
+      <workItem from="1682697651772" duration="199000" />
+      <workItem from="1682729653355" duration="1216000" />
+      <workItem from="1682841080631" duration="4300000" />
+      <workItem from="1682845445464" duration="5101000" />
+      <workItem from="1682851650596" duration="4018000" />
+      <workItem from="1682913203659" duration="1886000" />
+      <workItem from="1682943660292" duration="10970000" />
+      <workItem from="1683034466664" duration="1190000" />
+      <workItem from="1683077123804" duration="1608000" />
+      <workItem from="1683099906293" duration="6996000" />
+      <workItem from="1683111005870" duration="6382000" />
+      <workItem from="1683121794645" duration="1163000" />
+      <workItem from="1683122983585" duration="6422000" />
+      <workItem from="1683184356425" duration="11000" />
+      <workItem from="1683198875096" duration="6249000" />
+      <workItem from="1683274865531" duration="671000" />
+      <workItem from="1683295274894" duration="6217000" />
+      <workItem from="1683339009467" duration="597000" />
+      <workItem from="1683352656948" duration="30000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/zzh/controller/DishController.java</url>
+          <line>158</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/zzh/controller/DishController.java</url>
+          <line>157</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.baomidou.mybatisplus.extension.plugins.pagination.Page" memberName="total" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
