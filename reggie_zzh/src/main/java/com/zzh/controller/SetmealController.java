@@ -26,6 +26,7 @@ public class SetmealController {
 
     @Autowired
     private CategoryService categoryService;
+
     /**
      * 新增套餐
      * @param setmealDto
@@ -81,6 +82,21 @@ public class SetmealController {
 
         dtoPage.setRecords(list);
         return R.success(dtoPage);
+    }
+
+    /**
+     * 删除套餐（单个/批量）
+     * @param ids
+     * @return
+     */
+    @DeleteMapping
+    public R<String> delete(@RequestParam List<Long> ids){
+       // log.info("ids{}",ids);
+        boolean b = setmealService.removeWithSetmal(ids);
+        if (b){
+            return R.success("删除成功");
+        }
+        return R.error("异常，删除失败，请重试");
     }
 
 }
