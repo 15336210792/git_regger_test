@@ -127,4 +127,19 @@ public class AddressBookController {
 
         return stringR;
     }
+
+    @GetMapping("/default")
+    public R<AddressBook> getDefault(){
+
+        LambdaQueryWrapper<AddressBook> addressBookLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        addressBookLambdaQueryWrapper.eq(AddressBook::getIsDefault,1);
+
+        AddressBook one = addressBookService.getOne(addressBookLambdaQueryWrapper);
+        if (one != null){
+            return R.success(one);
+        }
+
+
+        return R.error("异常，没有默认地址");
+    }
 }
