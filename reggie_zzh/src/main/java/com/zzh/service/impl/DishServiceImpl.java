@@ -3,11 +3,12 @@ package com.zzh.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zzh.dto.DishDto;
-import com.zzh.ebtity.Dish;
-import com.zzh.ebtity.DishFlavor;
+import com.zzh.entity.Dish;
+import com.zzh.entity.DishFlavor;
 import com.zzh.mapper.DishMapper;
 import com.zzh.service.DishFlavorService;
 import com.zzh.service.DishService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,29 +18,45 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class DishServiceImpl extends ServiceImpl<DishMapper, Dish> implements DishService {
 
     @Autowired
     private DishFlavorService dishFlavorService;
 
     @Transactional
-    public Boolean saveWithFlavor(DishDto dishDto) {
+    public void saveWithFlavor(DishDto dishDto) {
         //保存菜品的基本信息到dish表中
         this.save(dishDto);
 
         //得到菜品的id
         Long dishDtoId = dishDto.getId();
+
         //得到菜品口味对应的list
         List<DishFlavor> flavors = dishDto.getFlavors();
-        //循环将菜品id传入（stream流的方式）
-        flavors = flavors.stream().map((item)->{
-            item.setDishId(dishDtoId);
-            return item;
-        }).collect(Collectors.toList());
 
-        //保存菜品口味到菜品口味表 dish_flavor  saveBatch 批量保存
-        boolean b = dishFlavorService.saveBatch(flavors);
-        return b;
+       // log.info("flavors.stream().count();++++++++{}",flavors);
+        //flavors.stream().count();++++++++[DishFlavor(id=null,
+        // dishId=null, name=, value=[], createTime=null, updateTime=null, createUser=null, updateUser=null, isDeleted=null)]
+        //flavors.stream().count();++++++++[DishFlavor(id=null, dishId=null, name=甜味, value=["无糖","少糖","半糖","多糖","全糖"]
+        // , createTime=null, updateTime=null, createUser=null, updateUser=null, isDeleted=null)]
+
+                //循环将菜品id传入（stream流的方式）
+                flavors = flavors.stream().map((item)->{
+
+                    if (item.getName() != null){
+                        item.setDishId(dishDtoId);
+                        return item;
+                    }
+                    return null;
+                }).collect(Collectors.toList());
+                //保存菜品口味到菜品口味表 dish_flavor  saveBatch 批量保存
+               if(flavors != null){
+                   dishFlavorService.saveBatch(flavors);
+               }
+
+
+
 
     }
 

@@ -1,7 +1,7 @@
 package com.zzh.dto;
 
-import com.zzh.ebtity.Setmeal;
-import com.zzh.ebtity.SetmealDish;
+import com.zzh.entity.Setmeal;
+import com.zzh.entity.SetmealDish;
 import lombok.Data;
 
 import java.util.List;

@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zzh.common.R;
 import com.zzh.dto.SetmealDto;
-import com.zzh.ebtity.Category;
-import com.zzh.ebtity.Setmeal;
+import com.zzh.entity.Category;
+import com.zzh.entity.Setmeal;
 import com.zzh.service.CategoryService;
 import com.zzh.service.SetmealService;
 import lombok.extern.slf4j.Slf4j;
@@ -29,8 +29,8 @@ public class SetmealController {
 
     /**
      * 新增套餐
-     * @param setmealDto
-     * @return
+     * @param setmealDto setmeal的包装类，继承了setmeal，并扩展了方法
+     * @return  返回R类型的消息
      */
     @PostMapping
     public R<String> save(@RequestBody SetmealDto setmealDto){
@@ -44,10 +44,10 @@ public class SetmealController {
 
     /**
      * 分页查询套餐列表
-     * @param page
-     * @param pageSize
-     * @param name
-     * @return
+     * @param page  当前在那一页
+     * @param pageSize  分页大小是多少
+     * @param name  查询条件是啥
+     * @return  返回那一页要展示的内容
      */
     @GetMapping("/page")
     public R<Page> page(int page,int pageSize,String name){
@@ -84,10 +84,22 @@ public class SetmealController {
         return R.success(dtoPage);
     }
 
+    //修改
+    // 回显
+    @GetMapping("/{id}")
+    public R<Setmeal> update1(@PathVariable Long id){
+        log.info("返回的数据+{}",id);
+        Setmeal byId = setmealService.getById(id);
+        if (byId != null){
+            return R.success(byId);
+        }
+        return R.error("异常异常");
+    }
+
     /**
      * 删除套餐（单个/批量）
-     * @param ids
-     * @return
+     * @param ids 前端返回的要删除的id
+     * @return  是否删除成功的字符串
      */
     @DeleteMapping
     public R<String> delete(@RequestParam List<Long> ids){
@@ -97,6 +109,29 @@ public class SetmealController {
             return R.success("删除成功");
         }
         return R.error("异常，删除失败，请重试");
+    }
+
+    /**
+     * 在前端页面中展示
+     * @param categoryId
+     * @param status
+     * @return
+     */
+    @GetMapping("/list")
+    public R<List<Setmeal>> list(Long categoryId, Integer status){
+        //log.info("前端传回来的值是：{}+++++++{}",categoryId,status);//前端传回1413386191767674881+++++++1
+
+        LambdaQueryWrapper<Setmeal> setmealLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        setmealLambdaQueryWrapper.eq(categoryId!= null,Setmeal::getCategoryId,categoryId);
+        setmealLambdaQueryWrapper.eq(status!= null,Setmeal::getStatus,status);
+
+        setmealLambdaQueryWrapper.orderByAsc(Setmeal::getUpdateTime);
+
+        List<Setmeal> list = setmealService.list(setmealLambdaQueryWrapper);
+        if (list!= null){
+            return R.success(list);
+        }
+        return R.error("异常，请重试");
     }
 
 }

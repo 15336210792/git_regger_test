@@ -3,7 +3,7 @@ package com.zzh.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zzh.common.R;
-import com.zzh.ebtity.Category;
+import com.zzh.entity.Category;
 import com.zzh.service.CategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,8 +101,8 @@ public class CategoryController {
         //添加查询条件
         queryWrapper.eq(category.getType() != null,Category::getType,category.getType());
 
-        //添加排序条件
-        queryWrapper.orderByDesc(Category::getSort).orderByAsc(Category::getUpdateTime);
+        //添加排序条件（先按照type类型来排）（再根据那个排序条件）（再根据修改时间）
+        queryWrapper.orderByAsc(Category::getType).orderByAsc(Category::getSort).orderByAsc(Category::getUpdateTime);
 
         List<Category> list = categoeyService.list(queryWrapper);
 

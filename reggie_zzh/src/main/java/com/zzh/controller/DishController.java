@@ -4,8 +4,9 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zzh.common.R;
 import com.zzh.dto.DishDto;
-import com.zzh.ebtity.Category;
-import com.zzh.ebtity.Dish;
+import com.zzh.entity.Category;
+import com.zzh.entity.Dish;
+import com.zzh.entity.DishFlavor;
 import com.zzh.service.CategoryService;
 import com.zzh.service.DishFlavorService;
 import com.zzh.service.DishService;
@@ -41,12 +42,9 @@ public class DishController {
     @PostMapping
     public R<String> save(@RequestBody DishDto dishDto) {
         //log.info(dishDto.toString());
-        Boolean aBoolean = dishService.saveWithFlavor(dishDto);
-        if (aBoolean) {
-            return R.success("新增菜品成功");
-        }
+        dishService.saveWithFlavor(dishDto);
 
-        return R.error("新增异常，请重试");
+        return R.success("新增菜品成功");
     }
 
 
@@ -191,7 +189,7 @@ public class DishController {
      * @param dish
      * @return
      */
-    @GetMapping("/list")
+   /* @GetMapping("/list")
     public R<List<Dish>> list(Dish dish) {
         //构造查询条件
         LambdaQueryWrapper<Dish> dishLambdaQueryWrapper = new LambdaQueryWrapper<Dish>();
@@ -206,6 +204,59 @@ public class DishController {
         List<Dish> list = dishService.list(dishLambdaQueryWrapper);
 
         return R.success(list);
+    }*/
+
+    /**
+     * 根据id查询对应菜品的数据，用于展示在套餐新增中展示数据,还需要查询口味信息
+     *
+     * @param dish
+     * @return
+     */
+    @GetMapping("/list")
+    public R<List<DishDto>> list(Dish dish) {
+        //构造查询条件
+        LambdaQueryWrapper<Dish> dishLambdaQueryWrapper = new LambdaQueryWrapper<Dish>();
+
+        dishLambdaQueryWrapper.eq(dish.getCategoryId() != null, Dish::getCategoryId, dish.getCategoryId());
+        //添加查询起售状态的菜品
+        dishLambdaQueryWrapper.eq(Dish::getStatus, 1);
+        //添加排序
+        dishLambdaQueryWrapper.orderByDesc(Dish::getSort).orderByAsc(Dish::getUpdateTime);
+        List<Dish> list = dishService.list(dishLambdaQueryWrapper);
+
+        //对象拷贝
+
+        List<DishDto> dishDtoList = list.stream().map((item) -> {
+            DishDto dishDto = new DishDto();
+
+            BeanUtils.copyProperties(item, dishDto);
+
+            Long categoryId = item.getCategoryId();//分类id
+            //根据id查询分类对象
+            Category category = categoryService.getById(categoryId);
+
+            if (category != null) {
+                String categoryName = category.getName();
+                dishDto.setCategoryName(categoryName);
+            }
+
+            Long dishid = item.getId();
+
+            LambdaQueryWrapper<DishFlavor> dishFlavorLambdaQueryWrapper = new LambdaQueryWrapper<>();
+            dishFlavorLambdaQueryWrapper.eq(dishid != null, DishFlavor::getDishId, dishid);
+
+            List<DishFlavor> dishFlavorList = dishFlavorService.list(dishFlavorLambdaQueryWrapper);
+
+            dishDto.setFlavors(dishFlavorList);
+
+
+            return dishDto;
+        }).collect(Collectors.toList());
+
+
+        return R.success(dishDtoList);
+
+
     }
 }
 

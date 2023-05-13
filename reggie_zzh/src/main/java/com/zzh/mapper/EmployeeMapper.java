@@ -2,7 +2,7 @@ package com.zzh.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.zzh.ebtity.Employee;
+import com.zzh.entity.Employee;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

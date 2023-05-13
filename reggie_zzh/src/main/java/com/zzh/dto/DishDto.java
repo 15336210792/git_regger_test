@@ -1,7 +1,7 @@
 package com.zzh.dto;
 
-import com.zzh.ebtity.Dish;
-import com.zzh.ebtity.DishFlavor;
+import com.zzh.entity.Dish;
+import com.zzh.entity.DishFlavor;
 import lombok.Data;
 
 import java.util.ArrayList;

@@ -1,24 +1,35 @@
-package com.zzh.ebtity;
+package com.zzh.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * 套餐
+ */
 @Data
-public class DishFlavor {
-
+public class Setmeal {
     private static final long serialVersionUID = 1L;
 
     private Long id;
 
-    private Long dishId;
+    private Long categoryId;
 
     private String name;
 
-    private String value;
+    private BigDecimal price;
+
+    private Integer status;
+
+    private String code;
+
+    private String description;
+
+    private String image;
 
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;

@@ -11,6 +11,10 @@ spring:
       username: root
       password: root
       time-between-eviction-runs-millis: 300000 #创建的连接在长时间得不到调用后会报错，
+  mail:
+    host: smtp.qq.com
+    username: 2805753067@qq.com
+    password: pcdvqqnxtwdfdehi
 mybatis-plus:
   configuration:
     #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
@@ -24,3 +28,4 @@ mybatis-plus:
 
 regger:
   path: D:\code\project\reggie_zzh\img\
+

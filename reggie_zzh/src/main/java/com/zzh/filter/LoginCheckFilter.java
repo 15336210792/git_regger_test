@@ -43,12 +43,15 @@ public class LoginCheckFilter implements Filter {
         String requestURI = request.getRequestURI();
 
         //定义不用处理的请求路径
-       // log.info("拦截到请求ID：{}",request.getRequestURI());
+       //log.info("拦截到请求ID：{}",request.getRequestURI());
+        //log.info("拦截到：{}",requestURI);
         String[] urls = new String[]{
                 "/employee/login",
                 "/employee/logout",
                 "/backend/**",
-                "/front/**"
+                "/front/**",
+                "/user/login",
+                "/user/sendMsg"
         };
 
         //2、判断本次请求是否需要处理
@@ -61,7 +64,7 @@ public class LoginCheckFilter implements Filter {
             return;
         }
 
-        //4、判断登录状态，如果已登录状态，则直接放行
+        //4-1、判断后台用户号登录状态，如果已登录状态，则直接放行
         if (request.getSession().getAttribute("employee") != null){
             //log.info("用户登录；{}",request.getSession().getAttribute("employee"));
             //long id = Thread.currentThread().getId();
@@ -70,6 +73,19 @@ public class LoginCheckFilter implements Filter {
             //利用线程存id
             Long lid = (Long) request.getSession().getAttribute("employee");
             BaseContext.setCurrentId(lid);
+            filterChain.doFilter(request,response);
+            return;
+        }
+
+        //4-2、判断前端用户登录状态，如果已登录状态，则直接放行
+        if (request.getSession().getAttribute("user") != null){
+            //log.info("用户登录；{}",request.getSession().getAttribute("user"));
+            //long id = Thread.currentThread().getId();
+            //log.info("已登录的线程的id{}",id);
+
+            //利用线程存id
+            Long userid = (Long) request.getSession().getAttribute("user");
+            BaseContext.setCurrentId(userid);
             filterChain.doFilter(request,response);
             return;
         }

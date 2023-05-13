@@ -1,7 +1,7 @@
 package com.zzh.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.zzh.ebtity.DishFlavor;
+import com.zzh.entity.DishFlavor;
 import com.zzh.mapper.DishFlavorMapper;
 import com.zzh.service.DishFlavorService;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.zzh.ebtity;
+package com.zzh.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -9,24 +9,28 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * 套餐菜品关系
+ * 菜品
  */
 @Data
-public class SetmealDish {
+public class Dish {
 
     private static final long serialVersionUID = 1L;
 
     private Long id;
 
-    private Long setmealId;
-
-    private String dishId;
-
     private String name;
+
+    private Long categoryId;
 
     private BigDecimal price;
 
-    private Integer copies;
+    private String code;
+
+    private String image;
+
+    private String description;
+
+    private Integer status;
 
     private Integer sort;
 

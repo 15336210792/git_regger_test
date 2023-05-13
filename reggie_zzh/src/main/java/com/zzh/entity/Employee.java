@@ -1,38 +1,29 @@
-package com.zzh.ebtity;
+package com.zzh.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
- * 菜品
+ * 员工实体类
  */
 @Data
-public class Dish {
+public class Employee {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID= 1L;
+
+
 
     private Long id;
-
     private String name;
-
-    private Long categoryId;
-
-    private BigDecimal price;
-
-    private String code;
-
-    private String image;
-
-    private String description;
-
+    private String username;
+    private String password;
+    private String phone;
+    private String sex;
+    private String idNumber;
     private Integer status;
-
-    private Integer sort;
 
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
@@ -46,6 +37,4 @@ public class Dish {
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Long updateUser;
 
-    @TableLogic
-    private Integer isDeleted;
 }
